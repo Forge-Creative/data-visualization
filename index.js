@@ -42,12 +42,21 @@ const renderMask = (selection, id, inverted) => {
 		.attr("height", height)
 		.attr("fill", inverted ? "black" : "white");
 
+	// const g = mask
+	// 	.append("g")
+	// 	.attr("transform", `translate(${width / 2}, ${height / 2})`);
+
 	mask
-		.append("g")
-		.attr("transform", `translate(${width / 2}, ${height / 2})`)
-		.append("path")
-		.attr("d", symbol(symbolsFill[3], 200000)())
-		.attr("fill", inverted ? "white" : "black");
+		.selectAll("g")
+		.data(range(symbolsFill.length))
+		.join((enter) =>
+			enter
+				.append("g")
+				.attr("transform", (d) => `translate(${d * 300}, ${height / 2})`)
+				.append("path")
+				.attr("d", (d) => symbol(symbolsFill[d], 50000)())
+				.attr("fill", inverted ? "white" : "black")
+		);
 };
 
 // renderMask(svg, "mask-1", false);
