@@ -33,7 +33,7 @@ svg
 	.attr("mask", "url(#mask-2)");
 
 // shape mask
-const renderMask = (id, inverted) => {
+const renderMask = (selection, id, inverted) => {
 	const mask = svg.append("mask").attr("id", id);
 
 	mask
@@ -46,9 +46,11 @@ const renderMask = (id, inverted) => {
 		.append("g")
 		.attr("transform", `translate(${width / 2}, ${height / 2})`)
 		.append("path")
-		.attr("d", symbol(symbolsFill[1], 200000)())
+		.attr("d", symbol(symbolsFill[3], 200000)())
 		.attr("fill", inverted ? "white" : "black");
 };
 
-renderMask("mask-1", false);
-renderMask("mask-2", true);
+// renderMask(svg, "mask-1", false);
+// renderMask(svg, "mask-2", true);
+
+svg.call(renderMask, "mask-1", false).call(renderMask, "mask-2", true);
