@@ -1,6 +1,5 @@
 import { select, range, symbol, symbolsFill } from "d3";
 
-const link = "http://www.w3.org/2000/svg";
 const width = window.innerWidth;
 const height = window.innerHeight;
 
@@ -11,7 +10,6 @@ const svg = select("body")
 	.attr("height", height);
 
 const n = 100;
-const marks = [];
 //horizontal lines
 svg
 	.append("g")
@@ -34,38 +32,23 @@ svg
 	.attr("height", height)
 	.attr("mask", "url(#mask-2)");
 
-// mask
-const mask = svg.append("mask").attr("id", "mask-1");
+// shape mask
+const renderMask = (id, inverted) => {
+	const mask = svg.append("mask").attr("id", id);
 
-// maskRect
-mask
-	.append("rect")
-	.attr("width", width)
-	.attr("height", height)
-	.attr("fill", "black");
+	mask
+		.append("rect")
+		.attr("width", width)
+		.attr("height", height)
+		.attr("fill", inverted ? "black" : "white");
 
-// circle
-mask
-	.append("g")
-	.attr("transform", `translate(${width / 2}, ${height / 2})`)
-	.append("path")
-	.attr("d", symbol(symbolsFill[1], 200000)())
-	.attr("fill", "white");
+	mask
+		.append("g")
+		.attr("transform", `translate(${width / 2}, ${height / 2})`)
+		.append("path")
+		.attr("d", symbol(symbolsFill[1], 200000)())
+		.attr("fill", inverted ? "white" : "black");
+};
 
-// mask2
-const mask2 = svg.append("mask").attr("id", "mask-2");
-
-// maskRect2
-mask2
-	.append("rect")
-	.attr("width", width)
-	.attr("height", height)
-	.attr("fill", "white");
-
-// circle2
-mask2
-	.append("g")
-	.attr("transform", `translate(${width / 2}, ${height / 2})`)
-	.append("path")
-	.attr("d", symbol(symbolsFill[1], 200000)())
-	.attr("fill", "black");
+renderMask("mask-1", false);
+renderMask("mask-2", true);
