@@ -37,28 +37,28 @@ const marks = [];
 // 	.attr("mask", (d) => d.mask);
 
 svg
-	.selectAll("rect.horizontal")
+	.append("g")
+	.selectAll("rect")
 	.data(range(n))
 	.join("rect")
 	.attr("y", (d) => d * 20)
 	.attr("width", width)
 	.attr("height", 10)
-	.attr("class", "horizontal")
 	.attr("mask", "url(#circle-mask)");
 
 // vertical lines
 svg
-	.selectAll("rect.vertical")
+	.append("g")
+	.selectAll("rect")
 	.data(range(n))
 	.join("rect")
 	.attr("x", (d) => d * 20)
 	.attr("width", 10)
 	.attr("height", height)
-	.attr("class", "vertical")
 	.attr("mask", "url(#circle-mask-2)");
 
 // mask
-const mask = svg.append("mask").attr("id", '"circle-mask');
+const mask = svg.append("mask").attr("id", "circle-mask");
 // const mask = document.createElementNS(link, "mask");
 // mask.setAttribute("id", "circle-mask");
 // svg.appendChild(mask);
@@ -68,7 +68,7 @@ mask
 	.append("rect")
 	.attr("width", width)
 	.attr("height", height)
-	.attr("fill", "white");
+	.attr("fill", "black");
 // const maskRect = document.createElementNS(link, "rect");
 // maskRect.setAttribute("width", width);
 // maskRect.setAttribute("height", height);
@@ -90,7 +90,7 @@ mask
 // mask.appendChild(circle);
 
 // mask2
-const mask2 = svg.append("mask2").attr("id", '"circle-mask-2');
+const mask2 = svg.append("mask").attr("id", "circle-mask-2");
 // const mask2 = document.createElementNS(link, "mask");
 // mask2.setAttribute("id", "circle-mask-2");
 // svg.appendChild(mask2);
