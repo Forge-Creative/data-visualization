@@ -95,7 +95,7 @@ const yScaleEvent = d3
 	.scaleBand()
 	.domain(events.map((d) => d.event))
 	.range([height, height - events.length * 20])
-	.padding(0.1);
+	.padding(0.3);
 
 svg
 	.selectAll(".event-term")
@@ -106,7 +106,7 @@ svg
 	.attr("x", (d) =>
 		xScale(new Date(d.start.year, d.start.month - 1, d.start.day))
 	)
-	.attr("y", (d) => yScaleEvent(d.event) - 150)
+	.attr("y", (d) => yScaleEvent(d.event) - 100)
 	.attr(
 		"width",
 		(d) =>
@@ -120,17 +120,24 @@ svg
 		tooltip
 			.html(
 				`<h3>Event: ${d.event}</h3>
-				<p>${d.start.year}-${d.start.month}-${d.start.day} to
-				End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
-				<p>${d.details}<br>
-				<a href="${d.link}" target="_blank">Read more</a></p>`
+                <p>${d.start.year}-${d.start.month}-${d.start.day} to
+                End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
+                <p>${d.details}<br>
+                <a href="${d.link}" target="_blank">Read more</a></p>`
 			)
 			.style("left", event.pageX + 5 + "px")
 			.style("top", event.pageY - 28 + "px");
 	})
-	.on("mouseout", function (d) {
-		tooltip.transition().duration(500).style("opacity", 0);
+	.on("mouseout", function (event) {
+		let isHovered = tooltip.node().matches(":hover");
+		if (!isHovered) {
+			tooltip.transition().duration(500).style("opacity", 0);
+		}
 	});
+
+tooltip.on("mouseleave", function () {
+	tooltip.transition().duration(50).style("opacity", 0);
+});
 
 //=====
 //Chart bars
