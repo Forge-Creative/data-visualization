@@ -1,17 +1,13 @@
 import * as d3 from "d3";
+import { homeOwnershipRate } from "./data";
 
-const svgWidth = window.innerWidth - 100;
-const svgHeight = window.innerHeight - 100;
+const svgWidth = 1200;
+const svgHeight = 400;
+const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+const width = svgWidth - margin.left - margin.right;
+const height = svgHeight - margin.top - margin.bottom;
 
-const dataset = [
-	{ x: 1, y: 5 },
-	{ x: 2, y: 15 },
-	{ x: 3, y: 8 },
-	{ x: 4, y: 20 },
-	{ x: 5, y: 13 },
-];
-
-// SVG要素を作成
+// SVG
 const svg = d3
 	.select("body")
 	.append("svg")
@@ -20,32 +16,38 @@ const svg = d3
 
 //scale
 const xScale = d3
-	.scaleLinear()
-	.domain([d3.min(dataset, (d) => d.x), d3.max(dataset, (d) => d.x)])
-	.range([0, svgWidth]);
+	.scaleTime()
+	.domain([new Date(1840, 0, 1), new Date(new Date().getFullYear(), 0, 1)]) // up to the current year
+	.range([0, width]);
 
 const yScale = d3
 	.scaleLinear()
-	.domain([0, d3.max(dataset, (d) => d.y)])
-	.range([svgHeight, 0]);
+	.domain([0, 100]) //percentage
+	.range([height, 0]);
 
-//line
+//chart line
 const line = d3
 	.line()
-	.x((d) => xScale(d.x))
-	.y((d) => yScale(d.y));
+	.x((d) => xScale(new Date(d.year, 0, 1)))
+	.y((d) => yScale(d.rate));
 
 svg
 	.append("path")
-	.attr("d", line(dataset))
-	.attr("stroke", "blue")
-	.attr("stroke-width", 2)
+	.datum(homeOwnershipRate)
+	.attr("d", line)
+	.attr("stroke", "#7A0708")
+	.attr("stroke-width", 5)
 	.attr("fill", "none");
 
+//=====
 //bar
+//=====
+//x-axis
 svg
 	.append("g")
-	.attr("transform", `translate(0, ${svgHeight})`)
-	.call(d3.axisBottom(xScale));
+	.attr("class", "x-axis")
+	.attr("transform", `translate(0, ${yScale(0)})`)
+	.call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
 
-svg.append("g").call(d3.axisLeft(yScale));
+//y-axis
+// svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
