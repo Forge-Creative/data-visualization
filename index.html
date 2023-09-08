@@ -9,13 +9,24 @@
 			body {
 				margin: 0;
 				padding: 0;
+				overflow: hidden;
 			}
 			svg {
 				margin: 100px;
 			}
+			#tooltip {
+				background-color: white;
+				padding: 5px;
+				border: 1px solid black;
+				border-radius: 5px;
+				pointer-events: none;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="tooltip" style="position: absolute; opacity: 0">
+			Tooltip content
+		</div>
 		<script src="/index.js"></script>
 	</body>
 </html>
