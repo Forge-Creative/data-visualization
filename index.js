@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { homeOwnershipRate, governments, periodEvents } from "./data";
+import { homeOwnershipRate, governments, events } from "./data";
 
 const svgWidth = 1200;
 const svgHeight = 800;
@@ -88,21 +88,52 @@ svg
 		tooltip.transition().duration(500).style("opacity", 0);
 	});
 
-//government label
-// svg
-// 	.selectAll(".gov-label")
-// 	.data(governments)
-// 	.enter()
-// 	.append("text")
-// 	.attr("class", "gov-label")
-// 	.attr("x", (d) => xScale(new Date(d.start, 0, 1)) + 55) // バーの少し右側
-// 	// .attr("y", (d) => yScaleGov(d.government) + yScaleGov.bandwidth() / 2)
-// 	.attr("y", 500)
-// 	.attr("dy", ".35em") // 上下中央に位置するための調整
-// 	.text((d) => d.government);
+//=====
+//Event period
+//=====
+const yScaleEvent = d3
+	.scaleBand()
+	.domain(events.map((d) => d.event))
+	.range([height, height - events.length * 20])
+	.padding(0.1);
+
+svg
+	.selectAll(".event-term")
+	.data(events)
+	.enter()
+	.append("rect")
+	.attr("class", "event-term")
+	.attr("x", (d) =>
+		xScale(new Date(d.start.year, d.start.month - 1, d.start.day))
+	)
+	.attr("y", (d) => yScaleEvent(d.event) - 150)
+	.attr(
+		"width",
+		(d) =>
+			xScale(new Date(d.end.year, d.end.month - 1, d.end.day)) -
+			xScale(new Date(d.start.year, d.start.month - 1, d.start.day))
+	)
+	.attr("height", yScaleEvent.bandwidth())
+	.attr("fill", (d) => d.color)
+	.on("mouseover", function (event, d) {
+		tooltip.transition().duration(200).style("opacity", 0.9);
+		tooltip
+			.html(
+				`<h3>Event: ${d.event}</h3>
+				<p>${d.start.year}-${d.start.month}-${d.start.day} to
+				End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
+				<p>${d.details}<br>
+				<a href="${d.link}" target="_blank">Read more</a></p>`
+			)
+			.style("left", event.pageX + 5 + "px")
+			.style("top", event.pageY - 28 + "px");
+	})
+	.on("mouseout", function (d) {
+		tooltip.transition().duration(500).style("opacity", 0);
+	});
 
 //=====
-//bar
+//Chart bars
 //=====
 //x-axis
 svg
