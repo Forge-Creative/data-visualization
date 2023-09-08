@@ -1,65 +1,51 @@
-import { select, range, symbol, symbolsFill } from "d3";
+import * as d3 from "d3";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
+const svgWidth = window.innerWidth - 100;
+const svgHeight = window.innerHeight - 100;
 
-// svg initialization
-const svg = select("body")
+const dataset = [
+	{ x: 1, y: 5 },
+	{ x: 2, y: 15 },
+	{ x: 3, y: 8 },
+	{ x: 4, y: 20 },
+	{ x: 5, y: 13 },
+];
+
+// SVG要素を作成
+const svg = d3
+	.select("body")
 	.append("svg")
-	.attr("width", width)
-	.attr("height", height);
+	.attr("width", svgWidth)
+	.attr("height", svgHeight);
 
-const n = 100;
-//horizontal lines
+//scale
+const xScale = d3
+	.scaleLinear()
+	.domain([d3.min(dataset, (d) => d.x), d3.max(dataset, (d) => d.x)])
+	.range([0, svgWidth]);
+
+const yScale = d3
+	.scaleLinear()
+	.domain([0, d3.max(dataset, (d) => d.y)])
+	.range([svgHeight, 0]);
+
+//line
+const line = d3
+	.line()
+	.x((d) => xScale(d.x))
+	.y((d) => yScale(d.y));
+
+svg
+	.append("path")
+	.attr("d", line(dataset))
+	.attr("stroke", "blue")
+	.attr("stroke-width", 2)
+	.attr("fill", "none");
+
+//bar
 svg
 	.append("g")
-	.selectAll("rect")
-	.data(range(n))
-	.join("rect")
-	.attr("y", (d) => d * 20)
-	.attr("width", width)
-	.attr("height", 10)
-	.attr("mask", "url(#mask-1)");
+	.attr("transform", `translate(0, ${svgHeight})`)
+	.call(d3.axisBottom(xScale));
 
-// vertical lines
-svg
-	.append("g")
-	.selectAll("rect")
-	.data(range(n))
-	.join("rect")
-	.attr("x", (d) => d * 20)
-	.attr("width", 10)
-	.attr("height", height)
-	.attr("mask", "url(#mask-2)");
-
-// shape mask
-const renderMask = (selection, id, inverted) => {
-	const mask = svg.append("mask").attr("id", id);
-
-	mask
-		.append("rect")
-		.attr("width", width)
-		.attr("height", height)
-		.attr("fill", inverted ? "black" : "white");
-
-	// const g = mask
-	// 	.append("g")
-	// 	.attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-	mask
-		.selectAll("g")
-		.data(range(symbolsFill.length))
-		.join((enter) =>
-			enter
-				.append("g")
-				.attr("transform", (d) => `translate(${d * 300}, ${height / 2})`)
-				.append("path")
-				.attr("d", (d) => symbol(symbolsFill[d], 50000)())
-				.attr("fill", inverted ? "white" : "black")
-		);
-};
-
-// renderMask(svg, "mask-1", false);
-// renderMask(svg, "mask-2", true);
-
-svg.call(renderMask, "mask-1", false).call(renderMask, "mask-2", true);
+svg.append("g").call(d3.axisLeft(yScale));
