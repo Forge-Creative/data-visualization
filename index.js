@@ -6,7 +6,14 @@ const svgHeight = 800;
 const margin = { top: 20, right: 20, bottom: 20, left: 20 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
-const zoom = d3.zoom().scaleExtent([1, 3]).on("zoom", zoomed);
+const zoom = d3
+	.zoom()
+	.scaleExtent([1, 3])
+	.translateExtent([
+		[0, 0],
+		[width, height],
+	])
+	.on("zoom", zoomed);
 
 // SVG
 const svg = d3
@@ -19,14 +26,69 @@ const svg = d3
 //scale
 const xScale = d3
 	.scaleTime()
-	.domain([new Date(1820, 0, 1), new Date(2040, 0, 1)])
+	.domain([new Date(1840, 0, 1), new Date(2040, 0, 1)])
 	// .domain([new Date(1840, 0, 1), new Date(new Date().getFullYear(), 0, 1)]) // up to the current year
 	.range([0, width]);
 
-//zoom
-function zoomed(event) {
-	const { transform } = event;
-	svg.attr("transform", transform);
+//zoom function
+function zoomed({ transform }) {
+	const newXScale = transform.rescaleX(xScale);
+	const scale = transform.k;
+	let tickInterval;
+
+	if (scale > 2) {
+		tickInterval = 1;
+	} else if (scale > 1) {
+		tickInterval = 5;
+	} else {
+		tickInterval = 10;
+	}
+
+	// update path
+	svg.select("path").attr(
+		"d",
+		line.x((d) => newXScale(new Date(d.year, 0, 1)))
+	);
+
+	// update government period bar
+	svg
+		.selectAll(".gov-term")
+		.attr("x", (d) =>
+			newXScale(new Date(d.start.year, d.start.month - 1, d.start.day))
+		)
+		.attr(
+			"width",
+			(d) =>
+				newXScale(new Date(d.end.year, d.end.month - 1, d.end.day)) -
+				newXScale(new Date(d.start.year, d.start.month - 1, d.start.day))
+		);
+
+	// update event period bar
+	svg
+		.selectAll(".event-term")
+		.attr("x", (d) =>
+			newXScale(new Date(d.start.year, d.start.month - 1, d.start.day))
+		)
+		.attr(
+			"width",
+			(d) =>
+				newXScale(new Date(d.end.year, d.end.month - 1, d.end.day)) -
+				newXScale(new Date(d.start.year, d.start.month - 1, d.start.day))
+		);
+
+	// update x-axis
+	svg
+		.select(".x-axis")
+		.call(
+			d3
+				.axisBottom(newXScale)
+				.ticks(d3.timeYear.every(tickInterval))
+				.tickFormat(d3.timeFormat("%Y"))
+		)
+		.attr("transform", `translate(0, ${yScale(0)}) scale(${transform.k},1)`)
+		.selectAll("text")
+		.attr("transform", "translate(-10,0)rotate(-45)")
+		.style("text-anchor", "end");
 }
 
 // ========================= home ownership =========================
@@ -155,7 +217,15 @@ svg
 	.append("g")
 	.attr("class", "x-axis")
 	.attr("transform", `translate(0, ${yScale(0)})`)
-	.call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
+	.call(
+		d3
+			.axisBottom(xScale)
+			.ticks(d3.timeYear.every(10))
+			.tickFormat(d3.timeFormat("%Y"))
+	)
+	.selectAll("text")
+	.attr("transform", "translate(10,10)");
+//.call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
 
 //y-axis
 // svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
