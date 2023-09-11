@@ -6,13 +6,15 @@ const svgHeight = 800;
 const margin = { top: 20, right: 20, bottom: 20, left: 20 };
 const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
+const zoom = d3.zoom().scaleExtent([1, 3]).on("zoom", zoomed);
 
 // SVG
 const svg = d3
 	.select("body")
 	.append("svg")
 	.attr("width", svgWidth)
-	.attr("height", svgHeight);
+	.attr("height", svgHeight)
+	.call(zoom);
 
 //scale
 const xScale = d3
@@ -20,6 +22,12 @@ const xScale = d3
 	.domain([new Date(1820, 0, 1), new Date(2040, 0, 1)])
 	// .domain([new Date(1840, 0, 1), new Date(new Date().getFullYear(), 0, 1)]) // up to the current year
 	.range([0, width]);
+
+//zoom
+function zoomed(event) {
+	const { transform } = event;
+	svg.attr("transform", transform);
+}
 
 // ========================= home ownership =========================
 const yScale = d3
@@ -40,7 +48,6 @@ svg
 	.attr("stroke", "#7A0708")
 	.attr("stroke-width", 5)
 	.attr("fill", "none");
-
 //========================= government period =========================
 const yScaleGov = d3
 	.scaleBand()
@@ -141,30 +148,6 @@ svg
 closeModal.on("click", function () {
 	modal.style("display", "none");
 });
-
-// 	.on("mouseover", function (event, d) {
-// 		tooltip.transition().duration(200).style("opacity", 0.9);
-// 		tooltip
-// 			.html(
-// 				`<h3>Event: ${d.event}</h3>
-//                 <p>${d.start.year}-${d.start.month}-${d.start.day} to
-//                 End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
-//                 <p>${d.details}<br>
-//                 <a href="${d.link}" target="_blank">Read more</a></p>`
-// 			)
-// 			.style("left", event.pageX + 5 + "px")
-// 			.style("top", event.pageY - 28 + "px");
-// 	})
-// 	.on("mouseout", function (event) {
-// 		let isHovered = tooltip.node().matches(":hover");
-// 		if (!isHovered) {
-// 			tooltip.transition().duration(500).style("opacity", 0);
-// 		}
-// 	});
-
-// tooltip.on("mouseleave", function () {
-// 	tooltip.transition().duration(50).style("opacity", 0);
-// });
 
 //========================= Chart bars =========================
 //x-axis
