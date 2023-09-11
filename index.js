@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { homeOwnershipRate, governments, events } from "./data";
 
-const svgWidth = 1200;
+const svgWidth = 1600;
 const svgHeight = 800;
 const margin = { top: 20, right: 20, bottom: 20, left: 20 };
 const width = svgWidth - margin.left - margin.right;
@@ -17,13 +17,11 @@ const svg = d3
 //scale
 const xScale = d3
 	.scaleTime()
-	.domain([new Date(1840, 0, 1), new Date(2040, 0, 1)])
+	.domain([new Date(1820, 0, 1), new Date(2040, 0, 1)])
 	// .domain([new Date(1840, 0, 1), new Date(new Date().getFullYear(), 0, 1)]) // up to the current year
 	.range([0, width]);
 
-//=====
-//home ownership
-//=====
+// ========================= home ownership =========================
 const yScale = d3
 	.scaleLinear()
 	.domain([0, 100]) //percentage
@@ -43,9 +41,7 @@ svg
 	.attr("stroke-width", 5)
 	.attr("fill", "none");
 
-//=====
-//government period
-//=====
+//========================= government period =========================
 const yScaleGov = d3
 	.scaleBand()
 	.domain(governments.map((d) => d.government))
@@ -88,14 +84,16 @@ svg
 		tooltip.transition().duration(500).style("opacity", 0);
 	});
 
-//=====
-//Event period
-//=====
+//========================= Event period =========================
 const yScaleEvent = d3
 	.scaleBand()
 	.domain(events.map((d) => d.event))
 	.range([height, height - events.length * 20])
 	.padding(0.3);
+
+const modal = d3.select("#modal");
+const closeModal = d3.select(".close");
+const modalContent = d3.select("#modal-content");
 
 svg
 	.selectAll(".event-term")
@@ -115,16 +113,11 @@ svg
 	)
 	.attr("height", yScaleEvent.bandwidth())
 	.attr("fill", (d) => d.color)
+	.attr("style", "cursor: pointer;")
 	.on("mouseover", function (event, d) {
 		tooltip.transition().duration(200).style("opacity", 0.9);
 		tooltip
-			.html(
-				`<h3>Event: ${d.event}</h3>
-                <p>${d.start.year}-${d.start.month}-${d.start.day} to
-                End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
-                <p>${d.details}<br>
-                <a href="${d.link}" target="_blank">Read more</a></p>`
-			)
+			.html(`<h3>${d.event}</h3>`)
 			.style("left", event.pageX + 5 + "px")
 			.style("top", event.pageY - 28 + "px");
 	})
@@ -133,15 +126,47 @@ svg
 		if (!isHovered) {
 			tooltip.transition().duration(500).style("opacity", 0);
 		}
+	})
+	.on("click", function (event, d) {
+		modalContent.html(`
+			<h3>${d.event}</h3>
+			<p>${d.start.year}-${d.start.month}-${d.start.day} to
+			End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
+			<p>${d.details}<br>
+			<a href="${d.link}" target="_blank">Read more</a></p>
+		`);
+		modal.style("display", "block");
 	});
 
-tooltip.on("mouseleave", function () {
-	tooltip.transition().duration(50).style("opacity", 0);
+closeModal.on("click", function () {
+	modal.style("display", "none");
 });
 
-//=====
-//Chart bars
-//=====
+// 	.on("mouseover", function (event, d) {
+// 		tooltip.transition().duration(200).style("opacity", 0.9);
+// 		tooltip
+// 			.html(
+// 				`<h3>Event: ${d.event}</h3>
+//                 <p>${d.start.year}-${d.start.month}-${d.start.day} to
+//                 End: ${d.end.year}-${d.end.month}-${d.end.day}</p>
+//                 <p>${d.details}<br>
+//                 <a href="${d.link}" target="_blank">Read more</a></p>`
+// 			)
+// 			.style("left", event.pageX + 5 + "px")
+// 			.style("top", event.pageY - 28 + "px");
+// 	})
+// 	.on("mouseout", function (event) {
+// 		let isHovered = tooltip.node().matches(":hover");
+// 		if (!isHovered) {
+// 			tooltip.transition().duration(500).style("opacity", 0);
+// 		}
+// 	});
+
+// tooltip.on("mouseleave", function () {
+// 	tooltip.transition().duration(50).style("opacity", 0);
+// });
+
+//========================= Chart bars =========================
 //x-axis
 svg
 	.append("g")
