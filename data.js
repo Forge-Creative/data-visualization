@@ -1,6 +1,4 @@
-//=====
-//home ownership data
-//=====
+//========================= home ownership data =========================
 export const homeOwnershipRate = [
 	{ year: 1890, rate: 100 },
 	{ year: 1936, rate: 70.5 },
@@ -23,9 +21,53 @@ export const homeOwnershipRate = [
 	{ year: 2030, rate: 35.5 },
 ];
 
-//=====
-//government period data
-//=====
+//========================= government period data =========================
+export const singleEvents = [
+	{
+		date: { year: 1940, month: 4, day: 29 },
+		title: "Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: 4, day: 29 },
+		title: "Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1942, month: 1, day: 1 },
+		title: "Māori War Effort Organisation - starts",
+		category: "Public Sector Organisation",
+		description:
+			"The process of urbanization was expedited through the efforts of the Māori War Effort Organisation (MWEO), founded in 1942 with the aim of channeling Māori involvement to bolster wartime endeavors. The MWEO established an intricate system of tribal committees tasked with sustaining recruitment efforts, ensuring adequate food production, and facilitating the mobilization of manpower. As the organization evolved, it encompassed a broader array of domains, including housing conditions, education, vocational training, land management, and concerns related to the potential misappropriation of social security benefits. Over time, the MWEO grew into the most expansive and comprehensive national Māori entity, effectively shaping various aspects of Māori life and engagement.",
+		source: "http://www.nzjh.auckland.ac.nz/docs/2002/NZJH_36_2_03.pdf",
+	},
+	{
+		date: { year: 1942, month: 2, day: 1 },
+		title: "2 Māori War Effort Organisation - starts",
+		category: "Public Sector Organisation",
+		description:
+			"The process of urbanization was expedited through the efforts of the Māori War Effort Organisation (MWEO), founded in 1942 with the aim of channeling Māori involvement to bolster wartime endeavors. The MWEO established an intricate system of tribal committees tasked with sustaining recruitment efforts, ensuring adequate food production, and facilitating the mobilization of manpower. As the organization evolved, it encompassed a broader array of domains, including housing conditions, education, vocational training, land management, and concerns related to the potential misappropriation of social security benefits. Over time, the MWEO grew into the most expansive and comprehensive national Māori entity, effectively shaping various aspects of Māori life and engagement.",
+		source: "http://www.nzjh.auckland.ac.nz/docs/2002/NZJH_36_2_03.pdf",
+	},
+	{
+		date: { year: 1942, month: 3, day: 1 },
+		title: "3 Māori War Effort Organisation - starts",
+		category: "Public Sector Organisation",
+		description:
+			"The process of urbanization was expedited through the efforts of the Māori War Effort Organisation (MWEO), founded in 1942 with the aim of channeling Māori involvement to bolster wartime endeavors. The MWEO established an intricate system of tribal committees tasked with sustaining recruitment efforts, ensuring adequate food production, and facilitating the mobilization of manpower. As the organization evolved, it encompassed a broader array of domains, including housing conditions, education, vocational training, land management, and concerns related to the potential misappropriation of social security benefits. Over time, the MWEO grew into the most expansive and comprehensive national Māori entity, effectively shaping various aspects of Māori life and engagement.",
+		source: "http://www.nzjh.auckland.ac.nz/docs/2002/NZJH_36_2_03.pdf",
+	},
+];
+
+//========================= government period data =========================
 export const governments = [
 	{
 		start: { year: 1935, month: 1, day: 1 },
@@ -57,9 +99,8 @@ export const governments = [
 	},
 ];
 
-//=====
-//period event data
-//=====
+//========================= period event data =========================
+
 export const events = [
 	{
 		start: { year: 1929, month: 5, day: 21 },

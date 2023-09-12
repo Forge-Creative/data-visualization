@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { homeOwnershipRate, governments, events } from "./data";
+import { homeOwnershipRate, governments, events, singleEvents } from "./data";
 
 const svgWidth = 1600;
 const svgHeight = 800;
@@ -67,6 +67,11 @@ function zoomed({ transform }) {
 				newXScale(new Date(d.end.year, d.end.month - 1, d.end.day)) -
 				newXScale(new Date(d.start.year, d.start.month - 1, d.start.day))
 		);
+
+	// update event dots
+	svg
+		.selectAll(".event-dot")
+		.attr("cx", (d) => newXScale(new Date(d.date.year, 0, 1)));
 
 	// update x-axis
 	const xAxisGroup = svg
@@ -216,6 +221,69 @@ svg
 closeModal.on("click", function () {
 	modal.style("display", "none");
 });
+
+//========================= Single event =========================
+//filter only one dot per year
+function filterEvents(events) {
+	let uniqueYears = {};
+	return events.filter((event) => {
+		if (!uniqueYears[event.date.year]) {
+			uniqueYears[event.date.year] = true;
+			return true;
+		}
+		return false;
+	});
+}
+const filteredEvents = filterEvents(singleEvents);
+
+// singleEvents dots
+svg
+	.selectAll(".event-dot")
+	// .data(singleEvents)
+	.data(filteredEvents)
+	.enter()
+	.append("circle")
+	.attr("class", "event-dot")
+	.attr("cx", (d) => xScale(new Date(d.date.year, 0, 1)))
+	.attr("cy", 750)
+	.attr("r", 3)
+	.attr("fill", "green") // event dot color
+	.attr("style", "cursor: pointer;")
+	.on("click", function (event, d) {
+		const eventsForYear = singleEvents.filter(
+			(e) => e.date.year === d.date.year
+		);
+		const eventListHTML = eventsForYear
+			.map(
+				(e) =>
+					`<li class="event-list-item" data-event-id="${e.date.year}-${e.date.month}-${e.date.day}">${e.title}</li>`
+			)
+			.join("");
+
+		tooltip
+			.html(`<ul>${eventListHTML}</ul>`)
+			.style("left", event.pageX + 5 + "px")
+			.style("top", event.pageY - 28 + "px")
+			.transition()
+			.duration(200)
+			.style("opacity", 0.9);
+
+		d3.selectAll(".event-list-item").on("click", function (event, d) {
+			const [year, month, day] = this.dataset.eventId.split("-").map(Number);
+			const eventDetails = singleEvents.find(
+				(e) =>
+					e.date.year === year && e.date.month === month && e.date.day === day
+			);
+
+			modalContent.html(`
+                    <h3>${eventDetails.title}</h3>
+                    <p>${eventDetails.description}<br>
+                    <a href="${eventDetails.source}" target="_blank">Source</a></p>
+                `);
+			modal.style("display", "block");
+			tooltip.style("opacity", 0);
+		});
+	});
 
 //========================= Chart bars =========================
 //x-axis
