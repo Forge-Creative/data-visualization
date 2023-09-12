@@ -8,7 +8,7 @@ const width = svgWidth - margin.left - margin.right;
 const height = svgHeight - margin.top - margin.bottom;
 const zoom = d3
 	.zoom()
-	.scaleExtent([1, 3])
+	.scaleExtent([1, 4])
 	.translateExtent([
 		[0, 0],
 		[width, height],
@@ -24,25 +24,17 @@ const svg = d3
 	.call(zoom);
 
 //scale
+const startYear = new Date(1835, 0, 1);
+const endYear = new Date(2040, 0, 1);
 const xScale = d3
 	.scaleTime()
-	.domain([new Date(1840, 0, 1), new Date(2040, 0, 1)])
+	.domain([startYear, endYear])
 	// .domain([new Date(1840, 0, 1), new Date(new Date().getFullYear(), 0, 1)]) // up to the current year
 	.range([0, width]);
 
-//zoom function
+//========================= zoom function =========================
 function zoomed({ transform }) {
 	const newXScale = transform.rescaleX(xScale);
-	const scale = transform.k;
-	let tickInterval;
-
-	if (scale > 2) {
-		tickInterval = 1;
-	} else if (scale > 1) {
-		tickInterval = 5;
-	} else {
-		tickInterval = 10;
-	}
 
 	// update path
 	svg.select("path").attr(
@@ -77,21 +69,35 @@ function zoomed({ transform }) {
 		);
 
 	// update x-axis
-	svg
+	const xAxisGroup = svg
 		.select(".x-axis")
 		.call(
 			d3
 				.axisBottom(newXScale)
-				.ticks(d3.timeYear.every(tickInterval))
+				.ticks(d3.timeYear.every(1))
 				.tickFormat(d3.timeFormat("%Y"))
 		)
-		.attr("transform", `translate(0, ${yScale(0)}) scale(${transform.k},1)`)
+		.attr("transform", `translate(0, ${yScale(0)})`);
+
+	// make visible only every 5 years
+	xAxisGroup
+		.selectAll(".tick text")
+		.style("opacity", (d) => (d.getFullYear() % 5 === 0 ? 1 : 0));
+
+	// thicker tick every 5 years
+	xAxisGroup
+		.selectAll(".tick")
+		.filter((d) => d.getFullYear() % 5 === 0)
+		.select("line")
+		.style("stroke-width", 2);
+
+	xAxisGroup
 		.selectAll("text")
 		.attr("transform", "translate(-10,0)rotate(-45)")
 		.style("text-anchor", "end");
 }
 
-// ========================= home ownership =========================
+//========================= home ownership =========================
 const yScale = d3
 	.scaleLinear()
 	.domain([0, 100]) //percentage
@@ -213,19 +219,29 @@ closeModal.on("click", function () {
 
 //========================= Chart bars =========================
 //x-axis
-svg
+const xAxisGroup = svg
 	.append("g")
 	.attr("class", "x-axis")
 	.attr("transform", `translate(0, ${yScale(0)})`)
 	.call(
 		d3
 			.axisBottom(xScale)
-			.ticks(d3.timeYear.every(10))
+			.ticks(d3.timeYear.every(1))
 			.tickFormat(d3.timeFormat("%Y"))
-	)
-	.selectAll("text")
-	.attr("transform", "translate(10,10)");
-//.call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
+	);
+
+// make visible only every 5 years
+xAxisGroup
+	.selectAll(".tick text")
+	.attr("transform", "translate(-15,8)rotate(-45)")
+	.style("opacity", (d) => (d.getFullYear() % 5 === 0 ? 1 : 0));
+
+// thicker tick every 5 years
+xAxisGroup
+	.selectAll(".tick")
+	.filter((d) => d.getFullYear() % 5 === 0)
+	.select("line")
+	.style("stroke-width", 2);
 
 //y-axis
 // svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
