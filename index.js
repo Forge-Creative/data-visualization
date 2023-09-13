@@ -124,6 +124,31 @@ svg
 	.attr("stroke", "#7A0708")
 	.attr("stroke-width", 5)
 	.attr("fill", "none");
+
+// 折れ線グラフのデータポイントにサークルを追加
+svg
+	.selectAll("circle.data-point")
+	.data(homeOwnershipRate)
+	.enter()
+	.append("circle")
+	.attr("class", "data-point")
+	.attr("cx", (d) => xScale(new Date(d.year, 0, 1)))
+	.attr("cy", (d) => yScale(d.rate))
+	.attr("r", 5)
+	.attr("fill", "#7A0708")
+	.on("mouseover", function (event, d) {
+		tooltip.transition().duration(200).style("opacity", 0.9);
+		tooltip
+			.html(
+				`<strong>Year:</strong> ${d.year} <br><strong>Rate:</strong> ${d.rate}%`
+			)
+			.style("left", event.pageX + 5 + "px")
+			.style("top", event.pageY - 28 + "px");
+	})
+	.on("mouseout", function (d) {
+		tooltip.transition().duration(500).style("opacity", 0);
+	});
+
 //========================= government period =========================
 const yScaleGov = d3
 	.scaleBand()
