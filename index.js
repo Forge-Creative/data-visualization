@@ -69,9 +69,12 @@ function zoomed({ transform }) {
 		);
 
 	// update event dots
+	const currentZoomScale = transform.k;
+	const radius = 3 + currentZoomScale - 1;
 	svg
 		.selectAll(".event-dot")
-		.attr("cx", (d) => newXScale(new Date(d.date.year, 0, 1)));
+		.attr("cx", (d) => newXScale(new Date(d.date.year, 0, 1)))
+		.attr("r", radius);
 
 	// update x-axis
 	const xAxisGroup = svg
@@ -249,41 +252,41 @@ svg
 	.attr("r", 3)
 	.attr("fill", "green") // event dot color
 	.attr("style", "cursor: pointer;")
-	.on("click", function (event, d) {
-		const eventsForYear = singleEvents.filter(
-			(e) => e.date.year === d.date.year
+	.on("click", function (event, clickedEvent) {
+		const eventModal = d3.select("#event-modal");
+		const eventTitles = d3.select("#event-titles");
+		const eventDetails = d3.select("#event-details");
+
+		const filteredEvents = singleEvents.filter(
+			(ev) => ev.date.year === clickedEvent.date.year
 		);
-		const eventListHTML = eventsForYear
-			.map(
-				(e) =>
-					`<li class="event-list-item" data-event-id="${e.date.year}-${e.date.month}-${e.date.day}">${e.title}</li>`
-			)
-			.join("");
 
-		tooltip
-			.html(`<ul>${eventListHTML}</ul>`)
-			.style("left", event.pageX + 5 + "px")
-			.style("top", event.pageY - 28 + "px")
-			.transition()
-			.duration(200)
-			.style("opacity", 0.9);
-
-		d3.selectAll(".event-list-item").on("click", function (event, d) {
-			const [year, month, day] = this.dataset.eventId.split("-").map(Number);
-			const eventDetails = singleEvents.find(
-				(e) =>
-					e.date.year === year && e.date.month === month && e.date.day === day
-			);
-
-			modalContent.html(`
-                    <h3>${eventDetails.title}</h3>
-                    <p>${eventDetails.description}<br>
-                    <a href="${eventDetails.source}" target="_blank">Source</a></p>
-                `);
-			modal.style("display", "block");
-			tooltip.style("opacity", 0);
+		// single event info
+		eventTitles.selectAll("*").remove();
+		filteredEvents.forEach((ev) => {
+			eventTitles
+				.append("li")
+				.text(`${ev.date.day}/${ev.date.month}: ${ev.title}`)
+				.attr("style", "cursor: pointer;")
+				.on("click", function () {
+					// show event details
+					eventDetails.html(`
+						<h3>${ev.title}</h3>
+						<p>Category: ${ev.category}</p>
+						<p>Date: ${ev.date.day}/${ev.date.month}/${ev.date.year}</p>
+						<p>${ev.description}<br>
+						<a href="${ev.source}" target="_blank">Original source</a></p>
+					`);
+				});
 		});
+
+		eventModal.style("display", "block");
 	});
+
+const closeModalEvent = d3.select("#event-modal .close");
+closeModalEvent.on("click", function () {
+	d3.select("#event-modal").style("display", "none");
+});
 
 //========================= Chart bars =========================
 //x-axis

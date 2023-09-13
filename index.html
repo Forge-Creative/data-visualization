@@ -22,6 +22,7 @@
 				pointer-events: none;
 				z-index: 10;
 			}
+
 			.modal {
 				display: none;
 				position: fixed;
@@ -59,6 +60,26 @@
 				text-decoration: none;
 				cursor: pointer;
 			}
+			/* event-modal  */
+			#event-modal .modal-content {
+				display: flex;
+				min-width: 1000px;
+			}
+
+			#event-modal .left-column {
+				overflow-y: auto;
+				width: 500px;
+			}
+
+			#event-modal .right-column {
+				width: 500px;
+			}
+
+			#event-modal .close {
+				position: absolute;
+				top: 0;
+				right: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -69,6 +90,17 @@
 			<div class="modal-content">
 				<span class="close">&times;</span>
 				<p id="modal-content"></p>
+			</div>
+		</div>
+		<div id="event-modal" class="modal">
+			<div class="modal-content">
+				<div class="left-column">
+					<ul id="event-titles"></ul>
+				</div>
+				<div class="right-column">
+					<div id="event-details"></div>
+					<span class="close">&times;</span>
+				</div>
 			</div>
 		</div>
 
