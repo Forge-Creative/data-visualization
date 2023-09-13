@@ -24,7 +24,16 @@ export const homeOwnershipRate = [
 //========================= government period data =========================
 export const singleEvents = [
 	{
-		date: { year: 1940, month: 4, day: 29 },
+		date: { year: 1941, month: "March", day: 26 },
+		title: "Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
 		title: "Rehabilitation Act - passed",
 		category: "Legal Framework",
 		description:
@@ -33,33 +42,8 @@ export const singleEvents = [
 			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
 	},
 	{
-		date: { year: 1941, month: 4, day: 29 },
-		title: "Rehabilitation Act - passed",
-		category: "Legal Framework",
-		description:
-			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
-		source:
-			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
-	},
-	{
-		date: { year: 1942, month: 1, day: 1 },
+		date: { year: 1942, month: "January", day: 1 },
 		title: "Māori War Effort Organisation - starts",
-		category: "Public Sector Organisation",
-		description:
-			"The process of urbanization was expedited through the efforts of the Māori War Effort Organisation (MWEO), founded in 1942 with the aim of channeling Māori involvement to bolster wartime endeavors. The MWEO established an intricate system of tribal committees tasked with sustaining recruitment efforts, ensuring adequate food production, and facilitating the mobilization of manpower. As the organization evolved, it encompassed a broader array of domains, including housing conditions, education, vocational training, land management, and concerns related to the potential misappropriation of social security benefits. Over time, the MWEO grew into the most expansive and comprehensive national Māori entity, effectively shaping various aspects of Māori life and engagement.",
-		source: "http://www.nzjh.auckland.ac.nz/docs/2002/NZJH_36_2_03.pdf",
-	},
-	{
-		date: { year: 1942, month: 2, day: 1 },
-		title: "2 Māori War Effort Organisation - starts",
-		category: "Public Sector Organisation",
-		description:
-			"The process of urbanization was expedited through the efforts of the Māori War Effort Organisation (MWEO), founded in 1942 with the aim of channeling Māori involvement to bolster wartime endeavors. The MWEO established an intricate system of tribal committees tasked with sustaining recruitment efforts, ensuring adequate food production, and facilitating the mobilization of manpower. As the organization evolved, it encompassed a broader array of domains, including housing conditions, education, vocational training, land management, and concerns related to the potential misappropriation of social security benefits. Over time, the MWEO grew into the most expansive and comprehensive national Māori entity, effectively shaping various aspects of Māori life and engagement.",
-		source: "http://www.nzjh.auckland.ac.nz/docs/2002/NZJH_36_2_03.pdf",
-	},
-	{
-		date: { year: 1942, month: 3, day: 1 },
-		title: "3 Māori War Effort Organisation - starts",
 		category: "Public Sector Organisation",
 		description:
 			"The process of urbanization was expedited through the efforts of the Māori War Effort Organisation (MWEO), founded in 1942 with the aim of channeling Māori involvement to bolster wartime endeavors. The MWEO established an intricate system of tribal committees tasked with sustaining recruitment efforts, ensuring adequate food production, and facilitating the mobilization of manpower. As the organization evolved, it encompassed a broader array of domains, including housing conditions, education, vocational training, land management, and concerns related to the potential misappropriation of social security benefits. Over time, the MWEO grew into the most expansive and comprehensive national Māori entity, effectively shaping various aspects of Māori life and engagement.",
