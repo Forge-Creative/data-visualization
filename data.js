@@ -42,6 +42,168 @@ export const singleEvents = [
 			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
 	},
 	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "2-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "2-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "3-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "3-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "4-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "4-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "5-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "5-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "6-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "6-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "7-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "7-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "8-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "8-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "9-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "9-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
+		date: { year: 1941, month: "March", day: 26 },
+		title: "10-1 Needy Families Scheme - starts",
+		category: "Housing Schemes & Funds",
+		description:
+			"The Child Welfare Branch of the Department of Education established the Needy Families Scheme, which aimed to provide support primarily through the relocation of large or economically disadvantaged families in order to maintain the integrity of the household unit. By 1946, this initiative had already aided more than 900 families and over 5,000 children. This scheme's inception was largely driven by the acute shortage of suitable housing in inner-city regions. It was overseen by a Committee composed of representatives from the State Advances Corporation, the Social Security Department, and the Child Welfare Branch (part of the Department of Education). As time progressed, the Committee recognized that the need for assistance extended beyond mere rent subsidies. In 1942, the Committee was granted the authority to approve a broader range of aid through a dedicated supplementary fund. This encompassed various forms of support, including modest grants to acquire essential items like food, clothing, and bedding. By 1947, the Child Welfare Branch assumed full responsibility for the scheme, broadening its scope to encompass families classified as 'needy' or facing specific challenges. This shift extended the program's reach to a wider range of families requiring support.",
+		source:
+			"https://www.msd.govt.nz/about-msd-and-our-work/about-msd/history/social-assistance-chronology-programme-history.html",
+	},
+	{
+		date: { year: 1941, month: "April", day: 29 },
+		title: "10-2 Rehabilitation Act - passed",
+		category: "Legal Framework",
+		description:
+			"As with post WW1, Māori veterans were not accorded the same economic rehabilitation and land access as other veterans:",
+		source:
+			"https://forms.justice.govt.nz/search/Documents/WT/wt_DOC_137836128/Wai%202500%2C%20A248.pdf",
+	},
+	{
 		date: { year: 1942, month: "January", day: 1 },
 		title: "Māori War Effort Organisation - starts",
 		category: "Public Sector Organisation",
