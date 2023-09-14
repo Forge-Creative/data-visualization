@@ -36,11 +36,16 @@ const xScale = d3
 function zoomed({ transform }) {
 	const newXScale = transform.rescaleX(xScale);
 
-	// update path
+	// update line chart
 	svg.select("path").attr(
 		"d",
 		line.x((d) => newXScale(new Date(d.year, 0, 1)))
 	);
+	// update data points on line chart
+	svg
+		.selectAll(".data-point")
+		.attr("cx", (d) => newXScale(new Date(d.year, 0, 1)))
+		.attr("cy", (d) => yScale(d.rate));
 
 	// update government period bar
 	svg
