@@ -75,10 +75,12 @@ function zoomed({ transform }) {
 
 	// update event dots
 	const currentZoomScale = transform.k;
-	const radius = 3 + currentZoomScale - 1;
+	const radius = 3 * currentZoomScale - 1;
+	const cy = 750 - currentZoomScale * 2;
 	svg
 		.selectAll(".event-dot")
 		.attr("cx", (d) => newXScale(new Date(d.date.year, 0, 1)))
+		.attr("cy", cy)
 		.attr("r", radius);
 
 	// update x-axis
