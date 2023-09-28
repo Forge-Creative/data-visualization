@@ -41,6 +41,10 @@ function zoomed({ transform }) {
 		"d",
 		line.x((d) => newXScale(new Date(d.year, 0, 1)))
 	);
+	svg.select(".house-rate").attr(
+		"d",
+		line.x((d) => newXScale(new Date(d.year, 0, 1)))
+	);
 	// update data points on line chart
 	svg
 		.selectAll(".data-point")
@@ -359,6 +363,7 @@ housingData().then((houseRate) => {
 	svg
 		.append("path")
 		.datum(houseRate)
+		.attr("class", "house-rate")
 		.attr("d", line)
 		.attr("stroke", "green")
 		.attr("stroke-width", 5)
