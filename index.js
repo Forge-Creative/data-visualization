@@ -132,7 +132,7 @@ svg
 	.attr("stroke-width", 5)
 	.attr("fill", "none");
 
-// 折れ線グラフのデータポイントにサークルを追加
+// add dots at the data point
 svg
 	.selectAll("circle.data-point")
 	.data(homeOwnershipRate)
@@ -348,3 +348,21 @@ xAxisGroup
 
 //y-axis
 // svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
+
+//========================= GraphQL test =========================
+
+import { housingData } from "./data.js";
+
+housingData().then((houseRate) => {
+	//chart line for housing rate
+	console.log(houseRate);
+	svg
+		.append("path")
+		.datum(houseRate)
+		.attr("d", line)
+		.attr("stroke", "green")
+		.attr("stroke-width", 5)
+		.attr("fill", "none");
+});
+
+//========================= GraphQL test end =========================

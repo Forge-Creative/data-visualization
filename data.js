@@ -1,3 +1,30 @@
+//========================= GraphQL test =========================
+export async function housingData() {
+	const response = await fetch(
+		"https://devbuildingbetter.fc9.sandbox.net.nz/graphql/",
+		{
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+			query {
+				pageBy(pageId: 252) {
+					timeLine {
+						housingRate {
+						rate
+						year
+						}
+					}
+				}
+			}
+		`,
+			}),
+		}
+	);
+	const data = await response.json();
+	return data.data.pageBy.timeLine.housingRate;
+}
+
 //========================= home ownership data =========================
 export const homeOwnershipRate = [
 	{ year: 1890, rate: 100 },
